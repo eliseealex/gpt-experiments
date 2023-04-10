@@ -21,7 +21,7 @@ def get_all_reviewed_notes():
     all_reviewed_note_ids = []
 
     for deck in all_decks:
-        reviewed_card_ids = invoke('findCards', query=f'deck:"{deck}" is:reviewed')
+        reviewed_card_ids = invoke('findCards', query=f'rated:1')
         reviewed_note_ids = [invoke('cardInfo', cardId=card_id)['note']['id'] for card_id in reviewed_card_ids]
 
         all_reviewed_note_ids.extend(reviewed_note_ids)
